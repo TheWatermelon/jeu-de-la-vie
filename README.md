@@ -1,5 +1,4 @@
 # Le jeu de la vie
-======
 
 ## Introduction
 
