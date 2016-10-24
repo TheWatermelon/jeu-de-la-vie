@@ -4,13 +4,9 @@
 
 Le jeu de la vie est un programme codé en C++, à but heuristique.
 
-## Dépendances
-
-La seule bibliothèque requise est curses, le reste est prévu dans le dépôt.
-
 ## Principe
 
-Le jeu de la vie (voir [l'article wikipédia sur le jeu de la vie](http://fr.wikipedia.org/wiki/Jeu_de_la_vie "Wikipédia: Le jeu de la vie")) se présente sous la forme d'un logiciel textuel en console. Il a été testé sous environnement linux.
+Le jeu de la vie (voir [l'article wikipédia sur le jeu de la vie](http://fr.wikipedia.org/wiki/Jeu_de_la_vie "Wikipédia: Le jeu de la vie")) est affiché en console. Il a été testé sous environnement linux.
 
 ## Installation
 
@@ -25,3 +21,7 @@ puis
 et enfin
 
 `make jeu && ./jeu`
+
+## Compatibilité
+
+Si vous voulez utiliser le jeu sous windows, il faut remplacer toutes les instructions system("clear") par system("cls") dans menus.cpp et simulation.cpp
