@@ -1,5 +1,5 @@
-jeu:    main.o menus.o grille.o simulation.o
-    g++ -o jeu main.o menus.o grille.o simulation.o
+jeu: main.o menus.o grille.o simulation.o
+    g++ -o jeu main.o menus.o grille.o cellule.o simulation.o
 
 main.o: main.cpp fonctions.h
     g++ -c main.cpp
@@ -9,6 +9,9 @@ menus.o: menus.cpp fonctions.h
 
 grille.o: grille.cpp
     g++ -c grille.cpp
+    
+cellule.o: cellule.cpp
+    g++ -c cellule.cpp
 
 simulation.o: simulation.cpp
     g++ -c simulation.cpp

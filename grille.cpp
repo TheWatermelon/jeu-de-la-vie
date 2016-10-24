@@ -86,7 +86,14 @@ class Grille {
         
         void nouvelleEtape() {
             int i, j, count;
-
+  
+            /* Boucle d'archivage */
+            for(int i=0; i<taille; i++) {
+              for(int j=0; j<taille; j++) {
+                tab[i][j].archive();
+              }
+            }
+          
             /* Boucle qui compte le nombre de voisins */
             for(j=0; j<taille; j++) {
                 for(i=0; i<taille; i++) {

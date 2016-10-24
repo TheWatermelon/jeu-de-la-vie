@@ -20,7 +20,7 @@ class Cellule {
         }
 
         void toggleAlive() {
-            alive=!alive;
+            alive=(alive)?false:true;;
         }
     
         void archive() {
