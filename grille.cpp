@@ -6,20 +6,28 @@ using namespace std;
 class Cellule {
     private:
         bool alive;
+        bool previous;
 
     public:
         Cellule() {
             alive=false;
+            previous=false;
         }
 
         void toggleAlive() {
-            if(alive)   alive = false;
-            else        alive = true;
+            alive=!alive;
+        }
+    
+        void archive() {
+            previous=alive;
+        }
+    
+        bool isPrevious() {
+            return previous;
         }
 
         bool isAlive() {
-            if(alive)   return true;
-            else        return false;
+            return alive;
         }
 };
 
@@ -100,112 +108,113 @@ class Grille {
             for(j=0; j<taille; j++) {
                 for(i=0; i<taille; i++) {
                     count=0;
+                    tab[i][j].archive();
                     /* La cellule est au milieu */
                     if(i>0 && i<(taille-1) && j>0 && j<(taille-1)) {
                         /* NORD */
-                        if(tab[i][j-1].isAlive())   count++;
+                        if(tab[i][j-1].isPrevious())   count++;
                         /* NORD-EST */
-                        if(tab[i+1][j-1].isAlive()) count++;
+                        if(tab[i+1][j-1].isPrevious()) count++;
                         /* EST */
-                        if(tab[i+1][j].isAlive())   count++;
+                        if(tab[i+1][j].isPrevious())   count++;
                         /* SUD-EST */
-                        if(tab[i+1][j+1].isAlive()) count++;
+                        if(tab[i+1][j+1].isPrevious()) count++;
                         /* SUD */
-                        if(tab[i][j+1].isAlive())   count++;
+                        if(tab[i][j+1].isPrevious())   count++;
                         /* SUD-OUEST */
-                        if(tab[i-1][j+1].isAlive()) count++;
+                        if(tab[i-1][j+1].isPrevious()) count++;
                         /* OUEST */
-                        if(tab[i-1][j].isAlive())   count++;
+                        if(tab[i-1][j].isPrevious())   count++;
                         /* NORD-OUEST */
-                        if(tab[i-1][j-1].isAlive()) count++;
+                        if(tab[i-1][j-1].isPrevious()) count++;
                     }
                     /* La cellule est au coin NORD-OUEST */
                     else if(i==0 && j==0) {
                         /* EST */
-                        if(tab[i+1][j].isAlive())   count++;
+                        if(tab[i+1][j].isPrevious())   count++;
                         /* SUD-EST */
-                        if(tab[i+1][j+1].isAlive()) count++;
+                        if(tab[i+1][j+1].isPrevious()) count++;
                         /* SUD */
-                        if(tab[i][j+1].isAlive())   count++;
+                        if(tab[i][j+1].isPrevious())   count++;
                     }
                     /* La cellule est au coin NORD-EST */
                     else if(i==(taille-1) && j==0) {
                         /* OUEST */
-                        if(tab[i-1][j].isAlive())   count++;
+                        if(tab[i-1][j].isPrevious())   count++;
                         /* SUD-OUEST */
-                        if(tab[i-1][j+1].isAlive()) count++;
+                        if(tab[i-1][j+1].isPrevious()) count++;
                         /* SUD */
-                        if(tab[i][j+1].isAlive())   count++;
+                        if(tab[i][j+1].isPrevious())   count++;
                     }
                     /* La cellule est au coin SUD-EST */
                     else if(i==(taille-1) && j==(taille-1)) {
                         /* NORD */
-                        if(tab[i][j-1].isAlive())   count++;
+                        if(tab[i][j-1].isPrevious())   count++;
                         /* NORD-OUEST */
-                        if(tab[i-1][j-1].isAlive()) count++;
+                        if(tab[i-1][j-1].isPrevious()) count++;
                         /* OUEST */
-                        if(tab[i-1][j].isAlive())   count++;
+                        if(tab[i-1][j].isPrevious())   count++;
                     }
                     /* La cellule est au coin SUD-OUEST */
                     else if(i==0 && j==(taille-1)) {
                         /* NORD */
-                        if(tab[i][j-1].isAlive())   count++;
+                        if(tab[i][j-1].isPrevious())   count++;
                         /* NORD-EST */
-                        if(tab[i+1][j-1].isAlive()) count++;
+                        if(tab[i+1][j-1].isPrevious()) count++;
                         /* EST */
-                        if(tab[i+1][j].isAlive())   count++;
+                        if(tab[i+1][j].isPrevious())   count++;
                     }
                     /* La cellule est au NORD */
                     else if(j==0) {
                         /* EST */
-                        if(tab[i+1][j].isAlive())   count++;
+                        if(tab[i+1][j].isPrevious())   count++;
                         /* SUD-EST */
-                        if(tab[i+1][j+1].isAlive()) count++;
+                        if(tab[i+1][j+1].isPrevious()) count++;
                         /* SUD */
-                        if(tab[i][j+1].isAlive())   count++;
+                        if(tab[i][j+1].isPrevious())   count++;
                         /* SUD-OUEST */
-                        if(tab[i-1][j+1].isAlive()) count++;
+                        if(tab[i-1][j+1].isPrevious()) count++;
                         /* OUEST */
-                        if(tab[i-1][j].isAlive())   count++;
+                        if(tab[i-1][j].isPrevious())   count++;
                     }
                     /* La cellule est à l'EST */
                     else if(i==(taille-1)) {
                         /* NORD */
-                        if(tab[i][j-1].isAlive())   count++;
+                        if(tab[i][j-1].isPrevious())   count++;
                         /* NORD-OUEST */
-                        if(tab[i-1][j-1].isAlive()) count++;
+                        if(tab[i-1][j-1].isPrevious()) count++;
                         /* OUEST */
-                        if(tab[i-1][j].isAlive())   count++;
+                        if(tab[i-1][j].isPrevious())   count++;
                         /* SUD-OUEST */
-                        if(tab[i-1][j+1].isAlive()) count++;
+                        if(tab[i-1][j+1].isPrevious()) count++;
                         /* SUD */
-                        if(tab[i][j+1].isAlive())   count++;
+                        if(tab[i][j+1].isPrevious())   count++;
                     }
                     /* La cellule est au SUD */
                     else if(j==(taille-1)) {
                         /* OUEST */
-                        if(tab[i-1][j].isAlive())   count++;
+                        if(tab[i-1][j].isPrevious())   count++;
                         /* NORD-OUEST */
-                        if(tab[i-1][j-1].isAlive()) count++;
+                        if(tab[i-1][j-1].isPrevious()) count++;
                         /* NORD */
-                        if(tab[i][j-1].isAlive())   count++;
+                        if(tab[i][j-1].isPrevious())   count++;
                         /* NORD-EST */
-                        if(tab[i+1][j-1].isAlive()) count++;
+                        if(tab[i+1][j-1].isPrevious()) count++;
                         /* EST */
-                        if(tab[i+1][j].isAlive())   count++;
+                        if(tab[i+1][j].isPrevious())   count++;
                     }
                     /* La cellule est à l'OUEST */
                     else if(i==0) {
                         /* NORD */
-                        if(tab[i][j-1].isAlive())   count++;
+                        if(tab[i][j-1].isPrevious())   count++;
                         /* NORD-EST */
-                        if(tab[i+1][j-1].isAlive()) count++;
+                        if(tab[i+1][j-1].isPrevious()) count++;
                         /* EST */
-                        if(tab[i+1][j].isAlive())   count++;
+                        if(tab[i+1][j].isPrevious())   count++;
                         /* SUD-EST */
-                        if(tab[i+1][j+1].isAlive()) count++;
+                        if(tab[i+1][j+1].isPrevious()) count++;
                         /* SUD */
-                        if(tab[i][j+1].isAlive())   count++;
+                        if(tab[i][j+1].isPrevious())   count++;
                     }
                     changementEtatCellule(count, i, j);
                 }
