@@ -1,5 +1,5 @@
 jeu:    main.o menus.o grille.o simulation.o
-    g++ -o jeu main.o menus.o grille.o simulation.o -lncurses
+    g++ -o jeu main.o menus.o grille.o simulation.o
 
 main.o: main.cpp fonctions.h
     g++ -c main.cpp

@@ -1,7 +1,6 @@
 #include <iostream>
 #include <unistd.h>
 #include <stdlib.h>
-#include <curses.h>
 #include "grille.cpp"
 using namespace std;
 

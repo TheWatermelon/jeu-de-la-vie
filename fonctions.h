@@ -2,8 +2,8 @@
 #define FONCTIONS_H
 
 /* grille.cpp */
-class Cellule {};
-class Grille {};
+class Cellule;
+class Grille;
 
 /* menus.cpp */
 void mainMenu();
